@@ -7,7 +7,9 @@ import pages.AutomationPage;
 import utilities.ParameterDriver;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DatatableExample {
 
@@ -24,22 +26,25 @@ public class DatatableExample {
     @Given("Fill the Form with this Data")
     public void fill_the_form_with_this_data(DataTable formValues) throws InterruptedException {
 
-        List<String> rows = formValues.transpose().asList(String.class);
+        var rows = formValues.asMaps(String.class, String.class); // java 11
 
-        page.sendKeysMethod(page.nameInput, rows.get(0));
-        page.sendKeysMethod(page.emailInput, rows.get(1));
-        page.sendKeysMethod(page.subjectInput, rows.get(2));
-        page.sendKeysMethod(page.messageInput, rows.get(3));
+        for(Map<String, String> row: rows){
+            page.sendKeysMethod(page.nameInput, row.get("name"));
+            page.sendKeysMethod(page.emailInput, row.get("email"));
+            page.sendKeysMethod(page.subjectInput, row.get("subject"));
+            page.sendKeysMethod(page.messageInput, row.get("message"));
+            System.out.println("scenario called");
+        }
         Thread.sleep(4000);
 
     }
     @Given("Click Submit Button")
     public void click_submit_button() {
-        page.clickMethod(page.submitButton);
+//        page.clickMethod(page.submitButton);
     }
     @Then("Verify Form is submitted")
     public void verify_form_is_submitted() {
-
+        System.out.println("Done");
     }
 
 

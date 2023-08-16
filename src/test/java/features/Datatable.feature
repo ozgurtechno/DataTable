@@ -5,6 +5,8 @@ Feature: Contact Us
     Given Navigate to Exercise page
     And Click on the Contact Us Button
     And Fill the Form with this Data
-      | Techno | techno@technoStudy.com | Datatable | This is our message |
+      | name   | email                  | subject   | message                    |
+      | Techno | techno@technoStudy.com | Datatable | This is our message        |
+      | Study  | techno@gmail.com       | Anything  | This is our second message |
     And Click Submit Button
     Then Verify Form is submitted
