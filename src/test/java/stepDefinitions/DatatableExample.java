@@ -24,7 +24,7 @@ public class DatatableExample {
     @Given("Fill the Form with this Data")
     public void fill_the_form_with_this_data(DataTable formValues) throws InterruptedException {
 
-        List<String> rows = formValues.asList(String.class);
+        List<String> rows = formValues.transpose().asList(String.class);
 
         page.sendKeysMethod(page.nameInput, rows.get(0));
         page.sendKeysMethod(page.emailInput, rows.get(1));
