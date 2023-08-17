@@ -3,8 +3,14 @@ Feature: Login Functionality
   so I can reach my info
 
 
-  Scenario: Login with valid username and password
+  Scenario Outline: Login with valid username and password
     Given Navigate to Campus
-    When Enter username and password
+    When Enter <username> and <password>
     And Click on Login Button
     Then User should login successfully
+
+
+    Examples:
+      | username | password |
+      | "turkeyts" | "TechnoStudy123"  |
+      | "ahmet" | "Hello" |
