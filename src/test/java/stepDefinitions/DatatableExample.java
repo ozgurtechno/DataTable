@@ -33,8 +33,9 @@ public class DatatableExample {
             page.sendKeysMethod(page.emailInput, row.get("email"));
             page.sendKeysMethod(page.subjectInput, row.get("subject"));
             page.sendKeysMethod(page.messageInput, row.get("message"));
-            System.out.println("scenario called");
+
         }
+        System.out.println("scenario called");
         Thread.sleep(4000);
 
     }
